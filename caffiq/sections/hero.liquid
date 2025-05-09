@@ -1,0 +1,191 @@
+{%- style -%}
+  .hero {
+    min-height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ section.settings.background_image | image_url }}');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .cta-button {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button.primary {
+    background: #c8a97e;
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background: #b38f6a;
+  }
+
+  .cta-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .cta-button.secondary:hover {
+    background: white;
+    color: #333;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feature i {
+    font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.subheading }}</p>
+    <div class="hero-buttons">
+      <a href="{{ section.settings.primary_button_link }}" class="cta-button primary">{{ section.settings.primary_button_text }}</a>
+      <a href="{{ section.settings.secondary_button_link }}" class="cta-button secondary">{{ section.settings.secondary_button_text }}</a>
+    </div>
+  </div>
+  <div class="hero-features">
+    <div class="feature">
+      <i class="fas fa-clock"></i>
+      <span>{{ section.settings.hours }}</span>
+    </div>
+    <div class="feature">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>{{ section.settings.location }}</span>
+    </div>
+    <div class="feature">
+      <i class="fas fa-phone"></i>
+      <span>{{ section.settings.phone }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Experience the Art of Coffee"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Where every cup tells a story, and every moment becomes a memory"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Primary Button Text",
+      "default": "View Menu"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Secondary Button Text",
+      "default": "Make Reservation"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Hours",
+      "default": "Open Daily 7AM-10PM"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Location",
+      "default": "123 Coffee Street, Brew City"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "(555) 123-4567"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %} 
